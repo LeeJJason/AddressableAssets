@@ -107,7 +107,7 @@ namespace UnityEditor.AddressableAssets.Build.DataBuilders
                 DisableCatalogUpdateOnStartup = aaSettings.DisableCatalogUpdateOnStartup,
                 IsLocalCatalogInBundle = aaSettings.BundleLocalCatalog,
 #if UNITY_2019_3_OR_NEWER
-                AddressablesVersion = PackageManager.PackageInfo.FindForAssembly(typeof(Addressables).Assembly)?.version,
+                AddressablesVersion = BuildScriptBase.PackageInfo?.version,
 #endif
                 MaxConcurrentWebRequests = aaSettings.MaxConcurrentWebRequests,
                 CatalogRequestsTimeout = aaSettings.CatalogRequestsTimeout

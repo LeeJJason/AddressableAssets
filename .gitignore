@@ -5,3 +5,4 @@ Project/.vsconfig
 Project/Project.sln
 *.csproj
 Project/obj/
+Project/ServerData/

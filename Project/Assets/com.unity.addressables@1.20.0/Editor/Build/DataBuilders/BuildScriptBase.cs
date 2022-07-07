@@ -21,6 +21,16 @@ namespace UnityEditor.AddressableAssets.Build.DataBuilders
     /// </summary>
     public class BuildScriptBase : ScriptableObject, IDataBuilder
     {
+        public static PackageManager.PackageInfo PackageInfo 
+        {
+            get
+            {
+                PackageManager.PackageInfo info = PackageManager.PackageInfo.FindForAssembly(typeof(BuildScriptBase).Assembly);
+                return info;
+            }
+        }
+
+
         /// <summary>
         /// The type of instance provider to create for the Addressables system.
         /// </summary>
@@ -55,8 +65,8 @@ namespace UnityEditor.AddressableAssets.Build.DataBuilders
         internal static void WriteBuildLog(BuildLog log, string directory)
         {
             Directory.CreateDirectory(directory);
-            PackageManager.PackageInfo info = PackageManager.PackageInfo.FindForAssembly(typeof(BuildScriptBase).Assembly);
-            log.AddMetaData(info.name, info.version);
+            PackageManager.PackageInfo info = BuildScriptBase.PackageInfo;
+            log.AddMetaData(info != null ? info.name : "com.unity.addressables", info != null ? info.version : "1.20.0");
             File.WriteAllText(Path.Combine(directory, "AddressablesBuildTEP.json"), log.FormatForTraceEventProfiler());
         }
 

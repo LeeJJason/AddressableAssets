@@ -253,7 +253,7 @@ namespace UnityEditor.AddressableAssets.Build.BuildPipelineTasks
             // This is the addressables section. Everything above could technically be moved to SBP.
             {
                 layout.UnityVersion = UnityEngine.Application.unityVersion;
-                PackageManager.PackageInfo info = PackageManager.PackageInfo.FindForAssembly(typeof(BuildLayoutPrinter).Assembly);
+                PackageManager.PackageInfo info = BuildScriptBase.PackageInfo;
                 if (info != null)
                     layout.PackageVersion = $"{info.name}: {info.version}";
 
